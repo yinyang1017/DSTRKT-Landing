@@ -9,10 +9,12 @@ function App() {
   return (
     <>
       <div className="absolute left-2/4 z-10 mx-auto w-full -translate-x-2/4 py-4 ">
-        <Navbar
-          routes={navItems}
-          theme={location.pathname !== "/contact" ? "dark" : "light"}
-        />
+        {location.pathname !== "/" && (
+          <Navbar
+            routes={navItems}
+            theme={location.pathname !== "/contact" ? "dark" : "light"}
+          />
+        )}
       </div>
       <Routes>
         {routes.map(
@@ -21,7 +23,7 @@ function App() {
         )}
         <Route path="*" element={<Navigate to="/home" replace />} />
       </Routes>
-      <DribbleBar />
+      {location.pathname !== "/" && <DribbleBar />}
     </>
   );
 }

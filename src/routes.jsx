@@ -7,8 +7,14 @@ import {
   DocumentTextIcon,
 } from "@heroicons/react/24/solid";
 import Contact from "./pages/contact";
+import Loading from "./pages/loading";
 
 export const routes = [
+  {
+    name: "loading",
+    path: "/",
+    element: <Loading />,
+  },
   {
     icon: HomeIcon,
     name: "home",
