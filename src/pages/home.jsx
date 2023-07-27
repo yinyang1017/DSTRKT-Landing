@@ -63,11 +63,6 @@ export function Home() {
                 >
                   The new dimension on streetwear
                 </Typography>
-                <Typography variant="lead" color="white" className="opacity-80">
-                  This is a simple example of a Landing Page you can build using
-                  Material Tailwind. It features multiple components based on
-                  the Tailwind CSS and Material Design by Google.
-                </Typography>
               </div>
             </div>
           </div>

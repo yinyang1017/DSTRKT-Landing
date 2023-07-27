@@ -1,7 +1,15 @@
+import * as React from "react";
+import PropTypes from "prop-types";
 import { Typography } from "@material-tailwind/react";
-
-export default function DribbleBar({}) {
-  const node = <About />;
+const components = {
+  about: About,
+  insider: InsiderAccess,
+  exclusive: ExclusiveDrops,
+  community: Community,
+  signUp: SignUp,
+};
+function DribbleBar({ tab }) {
+  const node = React.createElement(components[tab]);
   return (
     <div className="relative z-[10000] h-screen w-full bg-[#C9F24F] p-10">
       <button className="relative float-right uppercase text-black sm:hidden md:block">
@@ -54,3 +62,21 @@ function About() {
     </Typography>
   );
 }
+function SignUp() {
+  return <></>;
+}
+
+DribbleBar.propTypes = {
+  tab: PropTypes.oneOf([
+    "about",
+    "insider",
+    "home",
+    "community",
+    "exclusive",
+    "signUp",
+  ]),
+};
+DribbleBar.defaultProps = {
+  tab: "about",
+};
+export default DribbleBar;

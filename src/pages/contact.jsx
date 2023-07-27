@@ -71,7 +71,7 @@ export default function () {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
