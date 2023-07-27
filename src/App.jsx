@@ -1,12 +1,18 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { Navbar } from "@/widgets/layout";
-import routes from "@/routes";
+import DribbleBar from "./widgets/layout/dribbleBar";
+import routes, { navItems } from "@/routes";
 
 function App() {
+  const location = useLocation();
+
   return (
     <>
-      <div className="container absolute left-2/4 z-10 mx-auto -translate-x-2/4 p-4">
-        <Navbar routes={routes} />
+      <div className="absolute left-2/4 z-10 mx-auto w-full -translate-x-2/4 py-4 ">
+        <Navbar
+          routes={navItems}
+          theme={location.pathname !== "/contact" ? "dark" : "light"}
+        />
       </div>
       <Routes>
         {routes.map(
@@ -15,6 +21,7 @@ function App() {
         )}
         <Route path="*" element={<Navigate to="/home" replace />} />
       </Routes>
+      <DribbleBar />
     </>
   );
 }

@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -13,6 +13,7 @@
     "@material-tailwind/react": "^1.2.4",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
+    "react-alice-carousel": "^2.7.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.2"
   },

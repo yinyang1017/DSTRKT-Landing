@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import bgImg from "@/assets/images/bg.png";
 import {
   Card,
   CardHeader,
@@ -10,63 +11,88 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { SimpleFooter } from "@/widgets/layout";
+import { useState } from "react";
+const blackBox = {
+  initial: {
+    height: "100vh",
+  },
+};
 
-export function SignUp() {
+const InitialTransition = () => {
   return (
-    <>
-      <img
-        src="/img/background-2.jpg"
-        className="absolute inset-0 z-0 h-full w-full object-cover"
+    <div className="absolute inset-0 flex items-center justify-center">
+      <motion.div
+        className="relative z-50 w-full bg-black"
+        initial="initial"
+        animate="animate"
+        variants={blackBox}
       />
-      <div className="absolute inset-0 z-0 h-full w-full bg-black/50" />
-      <div className="container mx-auto p-4">
-        <Card className="absolute top-2/4 left-2/4 w-full max-w-[24rem] -translate-y-2/4 -translate-x-2/4">
-          <CardHeader
-            variant="gradient"
-            color="blue"
-            className="mb-4 grid h-28 place-items-center"
-          >
-            <Typography variant="h3" color="white">
-              Sign Up
-            </Typography>
-          </CardHeader>
-          <CardBody className="flex flex-col gap-4">
-            <Input variant="standard" label="Name" size="lg" />
-            <Input variant="standard" type="email" label="Email" size="lg" />
-            <Input
-              variant="standard"
-              type="password"
-              label="Password"
-              size="lg"
-            />
-            <div className="-ml-2.5">
-              <Checkbox label="I agree the Terms and Conditions" />
-            </div>
-          </CardBody>
-          <CardFooter className="pt-0">
-            <Button variant="gradient" fullWidth>
-              Sign Up
-            </Button>
-            <Typography variant="small" className="mt-6 flex justify-center">
-              Already have an account?
-              <Link to="/sign-in">
-                <Typography
-                  as="span"
-                  variant="small"
-                  color="blue"
-                  className="ml-1 font-bold"
+    </div>
+  );
+};
+export function SignUp() {
+  const [isSigned, setSign] = useState(false);
+  const afterSubmit = (
+    <div className="mb-4ml-auto mx-auto w-full px-4 text-center lg:w-1/3">
+      <Typography variant="h1" color="white">
+        THANK YOU!
+      </Typography>
+      <Typography variant="small" color="white">
+        You have been added to our waitlist. An email will be sent out before
+        the launch!
+      </Typography>
+    </div>
+  );
+
+  function onSubmit() {
+    setSign(true);
+  }
+  return (
+    <div className="relative flex h-screen content-center items-center justify-center pb-32 ">
+      {/* <InitialTransition /> */}
+      <div className="absolute top-0 h-full w-full bg-gradient-to-b from-[#6360C7] to-[#8782CD] bg-cover bg-center " />
+      <img
+        src={bgImg}
+        className="absolute my-auto h-2/3 w-auto object-cover object-center "
+      />
+      <div className="absolute inset-0 h-full w-full object-cover backdrop-blur-lg" />
+      <div className="max-w-8xl container relative mx-auto">
+        <div className="flex flex-wrap items-center">
+          {!isSigned ? (
+            <div className="mb-4ml-auto mx-auto w-full px-4 text-center lg:w-1/3">
+              <Typography color="white" variant="h1">
+                Sign Up
+              </Typography>
+              <Typography variant="h3" color="white" className="mb-16">
+                Early Access
+              </Typography>
+              <form
+                className="my-5 mb-12 flex flex-col items-center gap-4"
+                onSubmit={onSubmit}
+              >
+                <input
+                  className="h-10 w-full rounded-xl bg-[#F1F1F1] p-2 text-center"
+                  placeholder="FULL NAME"
+                />
+                <input
+                  className="h-10 w-full rounded-xl bg-[#F1F1F1] p-2 text-center"
+                  placeholder="EMAIL"
+                />
+
+                <Button
+                  className="w-1/2 rounded-full bg-[#C9F24F] px-10 font-bold text-black sm:w-full"
+                  type="submit"
                 >
-                  Sign in
-                </Typography>
-              </Link>
-            </Typography>
-          </CardFooter>
-        </Card>
+                  SIGN UP
+                </Button>
+              </form>
+            </div>
+          ) : (
+            afterSubmit
+          )}
+        </div>
       </div>
-      <div className="container absolute bottom-6 left-2/4 z-10 mx-auto -translate-x-2/4 text-white">
-        <SimpleFooter />
-      </div>
-    </>
+    </div>
   );
 }
 

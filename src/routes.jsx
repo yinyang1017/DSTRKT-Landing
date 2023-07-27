@@ -6,6 +6,7 @@ import {
   UserPlusIcon,
   DocumentTextIcon,
 } from "@heroicons/react/24/solid";
+import Contact from "./pages/contact";
 
 export const routes = [
   {
@@ -13,6 +14,11 @@ export const routes = [
     name: "home",
     path: "/home",
     element: <Home />,
+  },
+  {
+    name: "contact",
+    path: "/contact",
+    element: <Contact />,
   },
   {
     icon: UserCircleIcon,
@@ -40,5 +46,12 @@ export const routes = [
     element: "",
   },
 ];
-
+export const navItems = [
+  { title: "home" },
+  { title: "about" },
+  { title: "exclusive drops" },
+  { title: "insider access" },
+  { title: "community" },
+  { title: "sign up" },
+];
 export default routes;

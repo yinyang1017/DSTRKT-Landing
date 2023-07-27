@@ -4,183 +4,77 @@ import {
   CardBody,
   CardHeader,
   Typography,
-  Button,
   IconButton,
   Input,
   Textarea,
 } from "@material-tailwind/react";
-import { UsersIcon } from "@heroicons/react/24/solid";
-import { PageTitle, Footer } from "@/widgets/layout";
-import { FeatureCard, TeamCard } from "@/widgets/cards";
-import { featuresData, teamData, contactData } from "@/data";
-
+import { Footer } from "@/widgets/layout";
+import CharacterCarousel from "./home.character";
+import DribbleBar from "@/widgets/layout/dribbleBar";
+const SvgImg = () => {
+  return (
+    <svg
+      height="60"
+      viewBox="0 0 1024 138"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0 0H51.9249V137.601H0V0ZM133.015 0L166.712 71.3489L135.587 137.584H55.7068V115.171H93.969L114.582 71.3319L91.584 22.3967H55.7068V0H133.015Z"
+        fill="white"
+      />
+      <path
+        d="M208.347 0V31.2769L220.834 57.6109H300.118L323.116 106.359V137.618H270.987V106.359L258.704 80.0246H179.42L156.422 31.2769V0H208.347ZM205.655 97.2909L213.986 115.171H267.41V137.584H162.061V97.2909H205.655ZM323.116 0V40.3106H279.505L270.987 22.4308H212.112V0H323.116Z"
+        fill="white"
+      />
+      <path
+        d="M498.329 0V40.3106H454.717L446.199 22.4308H383.559L375.229 40.3106H331.617V0H498.329ZM440.85 25.1068V44.8104L441.055 137.584H388.925V25.1238H440.85V25.1068Z"
+        fill="white"
+      />
+      <path
+        d="M506.847 0H558.772V137.601H506.847V0ZM673.558 0V44.8274L652.741 89.0583H600.611L621.429 44.8274V22.4137H562.553V0H673.558ZM652.349 92.7911L673.558 137.601H621.429L610.918 115.188H562.553V92.774H652.349V92.7911Z"
+        fill="white"
+      />
+      <path
+        d="M682.076 0H734.001V137.601H682.076V0ZM827.561 92.774L848.771 137.584H796.641L786.13 115.171H737.766V92.757H827.561V92.774ZM848.771 0L806.744 89.0413H754.819L796.641 0H848.771Z"
+        fill="white"
+      />
+      <path
+        d="M1024 0V40.3106H980.389L971.871 22.4308H909.23L900.9 40.3106H857.289V0H1024ZM966.505 25.0897V44.8104L923.098 137.584H870.968L914.58 44.8104V25.1068H966.505V25.0897Z"
+        fill="white"
+      />
+    </svg>
+  );
+};
 export function Home() {
   return (
     <>
-      <div className="relative flex h-screen content-center items-center justify-center pt-16 pb-32">
-        <div className="absolute top-0 h-full w-full bg-[url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80')] bg-cover bg-center" />
-        <div className="absolute top-0 h-full w-full bg-black/75 bg-cover bg-center" />
-        <div className="max-w-8xl container relative mx-auto">
-          <div className="flex flex-wrap items-center">
-            <div className="ml-auto mr-auto w-full px-4 text-center lg:w-8/12">
-              <Typography
-                variant="h1"
-                color="white"
-                className="mb-6 font-black"
-              >
-                Your story starts with us.
-              </Typography>
-              <Typography variant="lead" color="white" className="opacity-80">
-                This is a simple example of a Landing Page you can build using
-                Material Tailwind. It features multiple components based on the
-                Tailwind CSS and Material Design by Google.
-              </Typography>
-            </div>
-          </div>
-        </div>
-      </div>
-      <section className="-mt-32 bg-gray-50 px-4 pb-20 pt-4">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {featuresData.map(({ color, title, icon, description }) => (
-              <FeatureCard
-                key={title}
-                color={color}
-                title={title}
-                icon={React.createElement(icon, {
-                  className: "w-5 h-5 text-white",
-                })}
-                description={description}
-              />
-            ))}
-          </div>
-          <div className="mt-32 flex flex-wrap items-center">
-            <div className="mx-auto -mt-8 w-full px-4 md:w-5/12">
-              <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-white p-3 text-center shadow-lg">
-                <UsersIcon className="h-6 w-6 text-blue-gray-900" />
+      <div className="h-screen">
+        <div className="relative flex content-center items-center justify-center pt-32">
+          <div className="absolute top-0 h-screen w-full bg-gradient-to-b from-[#6360C7] to-[#8782CD] bg-cover bg-center" />
+          <div className="max-w-8xl container relative mx-auto">
+            <div className="flex flex-wrap items-center">
+              <div className="ml-auto mr-auto flex w-full flex-col justify-items-center px-4 text-center lg:w-8/12">
+                <SvgImg />
+                <Typography
+                  variant="h2"
+                  color="white"
+                  className="mb-6 font-black uppercase"
+                >
+                  The new dimension on streetwear
+                </Typography>
+                <Typography variant="lead" color="white" className="opacity-80">
+                  This is a simple example of a Landing Page you can build using
+                  Material Tailwind. It features multiple components based on
+                  the Tailwind CSS and Material Design by Google.
+                </Typography>
               </div>
-              <Typography
-                variant="h3"
-                className="mb-3 font-bold"
-                color="blue-gray"
-              >
-                Working with us is a pleasure
-              </Typography>
-              <Typography className="mb-8 font-normal text-blue-gray-500">
-                Don't let your uses guess by attaching tooltips and popoves to
-                any element. Just make sure you enable them first via
-                JavaScript.
-                <br />
-                <br />
-                The kit comes with three pre-built pages to help you get started
-                faster. You can change the text and images and you're good to
-                go. Just make sure you enable them first via JavaScript.
-              </Typography>
-              <Button variant="outlined">read more</Button>
-            </div>
-            <div className="mx-auto mt-24 flex w-full justify-center px-4 md:w-4/12 lg:mt-0">
-              <Card className="shadow-lg shadow-gray-500/10">
-                <CardHeader className="relative h-56">
-                  <img
-                    alt="Card Image"
-                    src="/img/teamwork.jpeg"
-                    className="h-full w-full"
-                  />
-                </CardHeader>
-                <CardBody>
-                  <Typography
-                    variant="h5"
-                    color="blue-gray"
-                    className="mb-3 font-bold"
-                  >
-                    Top Notch Services
-                  </Typography>
-                  <Typography className="font-normal text-blue-gray-500">
-                    The Arctic Ocean freezes every winter and much of the
-                    sea-ice then thaws every summer, and that process will
-                    continue whatever happens.
-                  </Typography>
-                </CardBody>
-              </Card>
             </div>
           </div>
         </div>
-      </section>
-      <section className="px-4 pt-20 pb-48">
-        <div className="container mx-auto">
-          <PageTitle heading="Here are our heroes">
-            According to the National Oceanic and Atmospheric Administration,
-            Ted, Scambos, NSIDClead scentist, puts the potentially record
-            maximum.
-          </PageTitle>
-          <div className="mt-24 grid grid-cols-1 gap-12 gap-x-24 md:grid-cols-2 xl:grid-cols-4">
-            {teamData.map(({ img, name, position, socials }) => (
-              <TeamCard
-                key={name}
-                img={img}
-                name={name}
-                position={position}
-                socials={
-                  <div className="flex items-center gap-2">
-                    {socials.map(({ color, name }) => (
-                      <IconButton key={name} color={color} variant="text">
-                        <i className={`fa-brands text-lg fa-${name}`} />
-                      </IconButton>
-                    ))}
-                  </div>
-                }
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="relative bg-blue-gray-50/50 py-24 px-4">
-        <div className="container mx-auto">
-          <PageTitle heading="Build something">
-            Put the potentially record low maximum sea ice extent tihs year down
-            to low ice. According to the National Oceanic and Atmospheric
-            Administration, Ted, Scambos.
-          </PageTitle>
-          <div className="mx-auto mt-20 mb-48 grid max-w-5xl grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-3">
-            {contactData.map(({ title, icon, description }) => (
-              <Card
-                key={title}
-                color="transparent"
-                shadow={false}
-                className="text-center text-blue-gray-900"
-              >
-                <div className="mx-auto mb-6 grid h-14 w-14 place-items-center rounded-full bg-white shadow-lg shadow-gray-500/20">
-                  {React.createElement(icon, {
-                    className: "w-5 h-5",
-                  })}
-                </div>
-                <Typography variant="h5" color="blue-gray" className="mb-2">
-                  {title}
-                </Typography>
-                <Typography className="font-normal text-blue-gray-500">
-                  {description}
-                </Typography>
-              </Card>
-            ))}
-          </div>
-          <PageTitle heading="Want to work with us?">
-            Complete this form and we will get back to you in 24 hours.
-          </PageTitle>
-          <form className="mx-auto mt-12 max-w-3xl text-center">
-            <div className="mb-8 flex gap-8">
-              <Input variant="standard" size="lg" label="Full Name" />
-              <Input variant="standard" size="lg" label="Email Address" />
-            </div>
-            <Textarea variant="standard" size="lg" label="Message" rows={8} />
-            <Button variant="gradient" size="lg" className="mt-8">
-              Send Message
-            </Button>
-          </form>
-        </div>
-      </section>
-      <div className="bg-blue-gray-50/50">
-        <Footer />
+        <CharacterCarousel />
       </div>
+      <Footer />
     </>
   );
 }
