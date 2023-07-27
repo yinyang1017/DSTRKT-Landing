@@ -1,15 +1,5 @@
-import React from "react";
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  Typography,
-  IconButton,
-  Input,
-  Textarea,
-} from "@material-tailwind/react";
-import { Footer } from "@/widgets/layout";
-import CharacterCarousel from "./home.character";
+import { useEffect, useState } from "react";
+import { Typography } from "@material-tailwind/react";
 const SvgImg = () => {
   return (
     <svg
@@ -45,32 +35,35 @@ const SvgImg = () => {
     </svg>
   );
 };
-export function Home() {
+export default function () {
+  const [isLoading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 3000);
+  }, []);
   return (
     <>
       <div className="h-screen">
-        <div className="relative flex content-center items-center justify-center pt-32">
-          <div className="absolute top-0 h-screen w-full bg-gradient-to-b from-[#6360C7] to-[#8782CD] bg-cover bg-center" />
-          <div className="max-w-8xl container relative mx-auto">
-            <div className="flex flex-wrap items-center">
-              <div className="ml-auto mr-auto flex w-full flex-col justify-items-center px-4 text-center lg:w-8/12">
+        <div className="absolute top-0 h-screen w-full bg-gradient-to-b from-[#6360C7] to-[#8782CD] bg-cover bg-center" />
+        <div className="max-w-8xl container relative mx-auto flex h-full flex-col ">
+          <div className="flex h-full flex-wrap items-center">
+            <div className="ml-auto mr-auto flex w-full flex-col justify-items-center px-4 text-center lg:w-8/12">
+              {!isLoading ? (
                 <SvgImg />
+              ) : (
                 <Typography
-                  variant="h2"
-                  color="white"
+                  variant="h4"
+                  color="black"
                   className="mb-6 font-black uppercase"
                 >
-                  The new dimension on streetwear
+                  Loading...
                 </Typography>
-              </div>
+              )}
             </div>
           </div>
         </div>
-        <CharacterCarousel />
+
+        {/* <CharacterCarousel /> */}
       </div>
-      <Footer />
     </>
   );
 }
-
-export default Home;
